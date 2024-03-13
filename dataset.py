@@ -2,12 +2,12 @@ import os
 import typing as tp
 
 import torch
+from torch import Tensor
 from torch.nn.utils.rnn import pad_sequence
 from torch.utils.data import Dataset
 from torchtext.data.utils import get_tokenizer
 from torchtext.vocab import build_vocab_from_iterator, Vocab
 from tqdm import tqdm
-from torch import Tensor
 
 VOCAB_PATH = 'vocab.pth'
 

@@ -8,8 +8,7 @@ def generate_square_subsequent_mask(sz: int, device: torch.device) -> Tensor:
     return mask
 
 
-def create_mask(src: Tensor, tgt: Tensor, pad_id: int, device: torch.device) -> tuple[
-                Tensor, Tensor, Tensor, Tensor]:
+def create_mask(src: Tensor, tgt: Tensor, pad_id: int, device: torch.device) -> tuple[Tensor, Tensor, Tensor]:
     src_seq_len = src.shape[1]
     tgt_seq_len = tgt.shape[1]
 
@@ -17,5 +16,5 @@ def create_mask(src: Tensor, tgt: Tensor, pad_id: int, device: torch.device) -> 
     src_mask = torch.zeros((src_seq_len, src_seq_len), device=device).type(torch.bool)
 
     src_padding_mask = (src == pad_id)
-    tgt_padding_mask = (tgt == pad_id)
-    return src_mask, tgt_mask, src_padding_mask, tgt_padding_mask
+
+    return src_mask, tgt_mask, src_padding_mask
